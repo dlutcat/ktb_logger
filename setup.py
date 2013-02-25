@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+import sys
 from setuptools import setup
 
-version = '0.5'
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload -r internal')
+    sys.exit()
+
+version = '0.6'
 
 setup(name='ktb_logger',
       version=version,
@@ -23,6 +29,5 @@ setup(name='ktb_logger',
           'nose',
       ],
       test_suite='nose.collector',
-      package_dir={'': 'ktb_logger'},
       packages=['ktb_logger'],
 )
